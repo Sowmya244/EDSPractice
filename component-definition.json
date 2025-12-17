@@ -79,17 +79,18 @@
           },
           "model": "card"
         },
+
         {
           "title": "Card Fan",
           "id": "card-fan",
           "plugins": {
             "da": {
-              "unsafeHTML": "<div class=\"card-fan\"><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture></div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture></div><div><picture><source type=\"image/webp\" srcset=\"\"><source type=\"image/jpeg\" srcset=\"\"><img loading=\"lazy\"></picture></div></div>"
+              "unsafeHTML": "<div class=\"card-fan\"></div>"
             }
           },
-          "model": "card-fan",
-          "filter": "card-fan"
+          "model": "card-fan"
         },
+
         {
           "title": "Cards",
           "id": "cards",
