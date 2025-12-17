@@ -1,7 +1,8 @@
 /* ===============================
-   CARD FAN – EDS SAFE VERSION
+   CARD FAN – EDS + PREVIEW SAFE
 ================================ */
 
+/* Root (LESS specific FIRST) */
 .card-fan {
   position: relative;
   width: 100%;
@@ -10,6 +11,17 @@
   display: grid;
   place-items: center;
   overflow: hidden;
+
+  /* Prevent Preview overlay conflicts */
+  isolation: isolate;
+}
+
+/* Full-bleed protection (MORE specific AFTER) */
+.section > .card-fan {
+  width: 100vw;
+  max-width: none;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
 }
 
 /* Cards = direct children */
@@ -26,7 +38,7 @@
   opacity: 0;
 }
 
-/* Image */
+/* Image safety */
 .card-fan picture,
 .card-fan img {
   width: 100%;
@@ -36,37 +48,38 @@
   display: block;
 }
 
-/* STATES */
+/* ===============================
+   STATES
+================================ */
 
-/* CENTER */
 .card-fan > div.active {
   transform: translateZ(240px) scale(1);
   opacity: 1;
   z-index: 3;
 }
 
-/* LEFT */
 .card-fan > div.prev {
   transform: translateX(-200px) rotateY(25deg) scale(0.85);
   opacity: 0.6;
   z-index: 2;
 }
 
-/* RIGHT */
 .card-fan > div.next {
   transform: translateX(200px) rotateY(-25deg) scale(0.85);
   opacity: 0.6;
   z-index: 2;
 }
 
-/* HIDDEN */
 .card-fan > div.hidden {
   transform: scale(0.6) translateZ(-300px);
   opacity: 0;
   pointer-events: none;
 }
 
-/* Responsive */
+/* ===============================
+   RESPONSIVE
+================================ */
+
 @media (width <= 768px) {
   .card-fan {
     height: 420px;
