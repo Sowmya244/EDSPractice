@@ -1,34 +1,43 @@
 export default function decorate(block) {
   block.classList.add('card-fan');
 
-  const cards = [...block.children];
-  let current = Math.floor(cards.length / 2);
+  function init() {
+    const cards = [...block.children];
 
-  function update() {
-    cards.forEach((card, i) => {
-      card.classList.remove('active', 'prev', 'next', 'hidden');
+    if (cards.length < 2) {
+      requestAnimationFrame(init);
+      return;
+    }
 
-      const diff = i - current;
+    let current = Math.floor(cards.length / 2);
 
-      if (diff === 0) {
-        card.classList.add('active');
-      } else if (diff === -1) {
-        card.classList.add('prev');
-      } else if (diff === 1) {
-        card.classList.add('next');
-      } else {
-        card.classList.add('hidden');
-      }
+    function update() {
+      cards.forEach((card, i) => {
+        card.classList.remove('active', 'prev', 'next', 'hidden');
+
+        const diff = i - current;
+
+        if (diff === 0) {
+          card.classList.add('active');
+        } else if (diff === -1) {
+          card.classList.add('prev');
+        } else if (diff === 1) {
+          card.classList.add('next');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    cards.forEach((card, index) => {
+      card.addEventListener('click', () => {
+        current = index;
+        update();
+      });
     });
+
+    update();
   }
 
-  // Optional: click to focus
-  cards.forEach((card, index) => {
-    card.addEventListener('click', () => {
-      current = index;
-      update();
-    });
-  });
-
-  update();
+  init();
 }
