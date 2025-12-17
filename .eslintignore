@@ -1,7 +1,3 @@
-# Optional Adobe tooling (not needed for block linting)
-plugins/experimentation/**
 scripts/sidekick.js
-
-# Helix Importer UI (external / generated)
+plugins/experimentation/**
 helix-importer-ui/**
-
