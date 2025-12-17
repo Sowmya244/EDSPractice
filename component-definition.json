@@ -133,22 +133,22 @@
           }
         },
         {
-          "title": "Columns Cell",
-          "id": "columns-cell",
-          "plugins": {
-            "da": {
-              "unsafeHTML": "<div></div>",
-              "behaviour": "columns-cell"
-            }
-          }
-        },
-        {
           "title": "Columns Row",
           "id": "columns-row",
           "plugins": {
             "da": {
               "name": "columns-row",
               "behaviour": "columns-row"
+            }
+          }
+        },
+        {
+          "title": "Columns Cell",
+          "id": "columns-cell",
+          "plugins": {
+            "da": {
+              "unsafeHTML": "<div></div>",
+              "behaviour": "columns-cell"
             }
           }
         },
