@@ -1,13 +1,20 @@
 export default function decorate(block) {
   block.classList.add('card-fan');
 
-  function init() {
+  let initialized = false;
+
+  function setup() {
     const cards = [...block.children];
 
     if (cards.length < 2) {
-      requestAnimationFrame(init);
       return;
     }
+
+    if (initialized) {
+      return;
+    }
+
+    initialized = true;
 
     let current = Math.floor(cards.length / 2);
 
@@ -39,5 +46,15 @@ export default function decorate(block) {
     update();
   }
 
-  init();
+  // 🔥 Observe UE DOM mutations (Preview-safe)
+  const observer = new MutationObserver(() => {
+    setup();
+  });
+
+  observer.observe(block, {
+    childList: true,
+  });
+
+  // Try immediately (localhost case)
+  setup();
 }
